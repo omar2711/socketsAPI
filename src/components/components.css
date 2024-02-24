@@ -1,0 +1,6 @@
+.imageComponent {
+  width: 10%;
+  height: 10%;
+  object-fit: cover;
+  border-radius: 50%;
+}
