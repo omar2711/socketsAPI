@@ -105,7 +105,35 @@ export function ClientPage() {
         }
         
 
-       
+        const handleSendInfoToDatabase = () => {
+            const requestBody = {
+                pid: diskInfo.pid,
+                ip: '127.0.0.1',  // Cambia la dirección IP según tu configuración
+                port: 69,  // Cambia el puerto si es diferente
+                libre: diskInfo.libre,
+                utilizado: diskInfo.utilizado,
+                total: diskInfo.total
+            };
+        
+            fetch('http://127.0.0.1:8000/api/v1/sendInfoToDatabase/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al enviar la información a la base de datos');
+                }
+                alert('Información enviada con éxito a la base de datos');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al enviar la información a la base de datos');
+            });
+        }
+        
 
 
         
@@ -138,7 +166,7 @@ export function ClientPage() {
                 style={buttonStyle}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                onClick={handleSendMessage}
+                onClick={handleSendInfoToDatabase}
                 >
                     Enviar
                 </button>
