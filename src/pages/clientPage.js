@@ -85,8 +85,8 @@ export function ClientPage() {
 
         const handleSendMessage = () => {
            
-        
-            fetch(`http://127.0.0.1:8000/api/v1/sendMessage/?ip=${ip}&puerto=${port}&libre=${diskInfo.libre}&usado=${diskInfo.utilizado}&total=${diskInfo.total}&pid=${diskInfo.pid}`, {
+        //ip servidor:
+            fetch(`http://127.0.0.1:8000/api/v1/sendMessage/?ip=192.168.0.232&puerto=69&libre=${diskInfo.libre}&usado=${diskInfo.utilizado}&total=${diskInfo.total}&pid=${diskInfo.pid}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -123,20 +123,7 @@ export function ClientPage() {
                         <label>Process ID: {diskInfo.pid}</label>
                     </div>
                 )}
-                <div style={centeredDivStyle}> 
-                    <input 
-                    type="text"
-                    style={textBoxStyle}
-                    value={ip}
-                    onChange={handleIpChange}
-                    />
-                     <input 
-                    type="text"
-                    style={textBoxStyle}
-                    value={port}
-                    onChange={handlePortChange}
-                    />
-                </div>
+                
                 <button
                 style={buttonStyle}
                 onMouseEnter={() => setIsHovered(true)}
