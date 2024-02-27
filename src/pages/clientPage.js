@@ -71,7 +71,7 @@ export function ClientPage() {
 
         const handleSpaceCalculation = () => {
             
-            fetch('http://127.0.0.1:8000/api/v1/diskSpace/')
+            fetch('http://127.0.0.1:8000/api/getinfo')
             .then(response => response.json())
             .then(data => {
                 // Almacenar la información del disco en el estado
@@ -115,7 +115,7 @@ export function ClientPage() {
                 total: diskInfo.total
             };
         
-            fetch('http://127.0.0.1:8000/api/v1/sendInfoToDatabase/', {
+            fetch('http://192.168.0.212:9000/api/v1/sendInfoToDatabase/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
